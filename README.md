@@ -12,7 +12,7 @@ CREATE TABLE games (
   id TEXT PRIMARY KEY,
   code TEXT,
   guesses TEXT, -- JSON array of guesses
-  owner_id number,
+  owner_id number, -- Add later on when we do user authentication
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
