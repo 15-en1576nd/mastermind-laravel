@@ -13,7 +13,7 @@ class SelectedEmojiControllerTest extends TestCase
      * - POST request with a body of an integer emoji_id, which is between 0 and 8
      *   - Should return status code 200
      *   - When the number is not between 0 and 8, should return status code 400
-     *   - There should be an emoji_id and emoji in session
+     *   - There should be an emoji_id in session
      * - GET request
      *  - Should return status code 200
      *  - Returns {emoji_id: integer, emoji: string}
@@ -26,7 +26,6 @@ class SelectedEmojiControllerTest extends TestCase
         $response = $this->post('/selected-emoji', ['emoji_id' => 0]);
         $response->assertStatus(200);
         $response->assertSessionHas('emoji_id');
-        $response->assertSessionHas('emoji');
     }
 
     public function test_post_request_with_invalid_emoji_id()
