@@ -11,7 +11,7 @@ All games are stored in a database. The games table looks like this:
 CREATE TABLE games (
   id TEXT PRIMARY KEY,
   code TEXT,
-  guesses TEXT, -- JSON array of guesses
+  board TEXT, -- JSON object with the board. The board is an array of arrays. Each array is a row. Each row is an array of Emojis(in integer form).
   owner_id number, -- Add later on when we do user authentication
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
