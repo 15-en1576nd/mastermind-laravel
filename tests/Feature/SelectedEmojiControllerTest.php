@@ -26,6 +26,7 @@ class SelectedEmojiControllerTest extends TestCase
         $response = $this->post('/selected-emoji', ['emoji_id' => 0]);
         $response->assertStatus(200);
         $response->assertSessionHas('emoji_id');
+        $this->assertIsInt(session()->get('emoji_id'));
     }
 
     public function test_post_request_with_invalid_emoji_id()
