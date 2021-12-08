@@ -33,6 +33,8 @@ class SelectedEmojiControllerTest extends TestCase
     {
         $response = $this->post('/selected-emoji', ['emoji_id' => 9]);
         $response->assertStatus(400);
+        // Make sure the emoji_id didn't get set in session
+        $this->assertNull(session()->get('emoji_id'));
     }
 
     public function test_get_request()
