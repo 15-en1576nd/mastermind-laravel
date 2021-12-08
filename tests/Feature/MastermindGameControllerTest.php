@@ -11,7 +11,7 @@ class MastermindGameControllerTest extends TestCase
     /**
      * The controller should have the following methods:
      * index: GET /game
-     * - Should return a 404
+     * - Should not return 200
      * create: GET /game/create
      * - Should return a redirect to /game/<id> where <id> is a random string
      * update: PUT /game/<id> with a body of {'guess': '<guess>'} where <guess> is a string of 4 valid emoji_id's(1-8)
@@ -19,7 +19,8 @@ class MastermindGameControllerTest extends TestCase
     public function testIndex()
     {
         $response = $this->get('/game');
-        $response->assertStatus(404);
+        $status = $response->getStatusCode();
+        $this->assertNotEquals(200, $status);
     }
 
     public function testCreate()
