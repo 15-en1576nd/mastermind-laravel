@@ -4,9 +4,9 @@ return [
     // Mastermind game instructions
     'instructions' => <<<'EOT'
         Mastermind is een code-brekend spel. De computer heeft een geheime code gegenereerd
-        bestaande uit vier gekleurde pinnen. De speler moet de code raden. De speler
-        heeft daarvoor twaalf keer raden. Elke gok bestaat uit vier gekleurde pinnen.
-        De speler krijgt een punt voor elke pin in de juiste positie. De
+        bestaande uit vier Emojis. De speler moet de code raden. De speler
+        heeft daarvoor twaalf keer raden. Elke gok bestaat uit vier Emojis.
+        De speler krijgt een punt voor elke Emoji in de juiste positie. De
         speler krijgt een punt voor elke peg in de juiste positie en kleur,
         maar niet op de juiste plaats. De speler verliest een punt voor elke peg
         op de verkeerde positie. De speler verliest een punt voor elke peg in de verkeerde
