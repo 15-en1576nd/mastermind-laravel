@@ -32,8 +32,15 @@ class MastermindGameControllerTest extends TestCase
     public function testUpdate()
     {
         $game_url = $this->get('/game/create')->getTargetUrl();
-    
-        $response = $this->put($game_url, ['guess' => '1234']);
+
+        $response = $this->put($game_url, ['guess' => '6546']);
         $response->assertStatus(200);
+
+        // Make sure that the guess actually persisted
+        $response = $this->get($game_url);
+        $response->assertSee('6');
+        $response->assertSee('5');
+        $response->assertSee('4');
+        $response->assertSee('6');
     }
 }
