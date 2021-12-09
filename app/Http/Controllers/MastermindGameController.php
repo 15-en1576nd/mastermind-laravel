@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\MastermindDatabaseController;
+use App\Rules\LegalGuess;
 
 class MastermindGameController extends Controller
 {
@@ -22,6 +23,10 @@ class MastermindGameController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'guess' => ['required', 'string', new LegalGuess],
+        ]);
+
         $db = new MastermindDatabaseController();
         $game = $db->get($id);
         $game["board"][$game["turn"]] = $request->input('guess');
