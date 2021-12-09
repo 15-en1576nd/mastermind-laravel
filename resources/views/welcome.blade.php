@@ -7,7 +7,7 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <title>{{config('app.name')}} - {{__('shorts.instructions')}}</title>
     </head>
-    <body class="antialiased bg-green-300">
+    <body class="antialiased">
         <x-instructions></x-instructions>
     </body>
 </html>
