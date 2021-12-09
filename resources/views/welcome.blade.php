@@ -8,6 +8,7 @@
         <title>{{config('app.name')}} - {{__('shorts.instructions')}}</title>
     </head>
     <body class="antialiased">
+        <h1 class="text-6xl text-gray-800 mx-auto max-w-max">{{config('app.name')}}</h1>
         <x-instructions></x-instructions>
     </body>
 </html>
