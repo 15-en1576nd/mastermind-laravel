@@ -29,7 +29,14 @@ class MastermindGameController extends Controller
 
         $db = new MastermindDatabaseController();
         $game = $db->get($id);
-        $game["board"][$game["turn"]] = $request->input('guess');
+        // Make every characer of the guess a seperate element in an array
+        $str_guesses = str_split($request->input('guess'));
+        $int_guesses = [];
+        foreach ($str_guesses as $char) {
+            array_push($int_guesses, intval($char));
+        }
+
+        $game["board"][$game["turn"]] = $int_guesses;
         $db->update($game);
         return view('mastermind.game', ['game' => $game]);
     }
