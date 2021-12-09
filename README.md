@@ -15,6 +15,7 @@ CREATE TABLE games (
   hints TEXT, -- JSON object with the hints. The hints are an array of arrays. Each array is a row. Each row is an array of integers ranging from 0 to 2. With 0 being no hint, 1 being an exact match and 2 being a partial match.
   lost INTEGER, -- 0 or 1
   won INTEGER, -- 0 or 1
+  turn INTEGER, -- should be pretty obvious what this is... Right?
   owner_id number, -- Add later on when we do user authentication
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
