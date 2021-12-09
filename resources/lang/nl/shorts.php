@@ -2,4 +2,5 @@
 
 return [
     'instructions' => 'instructies',
+    'play' => 'speel',
 ];

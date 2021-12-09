@@ -9,6 +9,12 @@
     </head>
     <body class="antialiased">
         <h1 class="text-6xl text-gray-800 mx-auto max-w-max my-8">{{config('app.name')}}</h1>
+        <div class="flex justify-around max-w-sm mx-auto my-5">
+            <a
+                href="/game/create"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-semibold text-xl py-2 px-4 rounded-full"
+            >{{strtoupper(__('shorts.play'))}}</a>
+        </div>
         <x-instructions></x-instructions>
     </body>
 </html>
