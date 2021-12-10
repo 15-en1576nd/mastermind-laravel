@@ -11,7 +11,7 @@
                         <input type="hidden" name="emoji_id" value="{{app('App\Http\Controllers\SelectedEmojiController')->index()["emoji_id"]}}">
                         <input type="hidden" name="slot" value="{{$loop->index}}">
                         <button
-                            class="w-8 h-8 m-1 border rounded hover:bg-gray-400 {{ 11 - $game['turn'] !== $loop->parent->index ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-300' }}"
+                            class="w-8 h-8 m-1 border rounded {{ 11 - $game['turn'] !== $loop->parent->index ? 'bg-gray-200 hover:bg-gray-400 cursor-not-allowed' : 'bg-gray-400 hover:bg-gray-600' }}"
                             type="submit"
                             {{ 11 - $game['turn'] !== $loop->parent->index ? 'disabled' : '' }}
                         >

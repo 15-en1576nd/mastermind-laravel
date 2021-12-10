@@ -11,7 +11,7 @@
             @csrf
             <input type="hidden" name="emoji_id" value="{{$loop->index+1}}">
             <button
-                class="w-8 h-8 m-1 border rounded hover:bg-gray-400 {{ (app('App\Http\Controllers\SelectedEmojiController')->index()['emoji_id']-1) != $loop->index ? 'bg-gray-200' : 'bg-gray-400' }}"
+                class="w-8 h-8 m-1 border rounded {{ (app('App\Http\Controllers\SelectedEmojiController')->index()['emoji_id']-1) != $loop->index ? 'bg-gray-200 hover:bg-gray-400' : 'bg-gray-400 hover:bg-gray-600' }}"
                 type="submit"
             >
                 {{ $emoji }}
