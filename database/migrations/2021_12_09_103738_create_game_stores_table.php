@@ -15,6 +15,7 @@ class CreateGameStoresTable extends Migration
     {
         Schema::create('game_stores', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->text('board');
             $table->text('hints');
             $table->integer('lost');
