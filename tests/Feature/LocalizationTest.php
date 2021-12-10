@@ -17,14 +17,14 @@ class LocalizationTest extends TestCase
     {
         // Make sure the page is in English
         $this->get('/')
-            ->assertSee('Mastermind is a code-breaking game');
-        
+        ->assertSee('MojiMind is a code breaking game');
+
         // Change the locale to Dutch, should redirect to /
         $this->get('/language/nl')
             ->assertRedirect('/');
-        
+
         // Check if the instructions are now Dutch
         $this->get('/')
-            ->assertSee('Mastermind is een code-brekend spel');
+        ->assertSee('MojiMind is een codebrekend spel');
     }
 }
