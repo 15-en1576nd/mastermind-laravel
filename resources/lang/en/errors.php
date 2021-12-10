@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'legal_guess' => 'Please enter a valid guess.',
+    'legal_emoji' => 'Please enter a valid Emoji.',
 ];
