@@ -1,5 +1,8 @@
 # Mastermind-laravel
 
+![test](https://github.com/15-en1576nd/mastermind-laravel/actions/workflows/tests.yaml/badge.svg)
+![build](https://github.com/15-en1576nd/mastermind-laravel/actions/workflows/docker-publish.yaml/badge.svg)
+
 ## Architecture
 
 When a user starts the game, the user gets redirected to /game/<game id>
