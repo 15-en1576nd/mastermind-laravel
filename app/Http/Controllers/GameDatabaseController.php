@@ -7,14 +7,22 @@ use Illuminate\Http\Request;
 
 class GameDatabaseController extends Controller
 {
-    function store($id, $game){
+    function store(){
+        $empty_board = [];
+        for ($i = 0; $i < 12; $i++) {
+            $empty_board[$i] = [0, 0, 0, 0];
+        }
+        $code = [];
+        for ($i = 0; $i < 4; $i++) {
+            $code[$i] = rand(1, 8);
+        }
         $game = GameStore::create([
-            'code' => $game['code'],
-            'board' => $game['board'],
-            'hints' => $game['hints'],
-            'lost' => $game['lost'],
-            'won' => $game['won'],
-            'turn' => $game['turn'],
+            'code' => join('', $code),
+            'board' => $empty_board,
+            'hints' => $empty_board,
+            'lost' => 0,
+            'won' => 0,
+            'turn' => 0,
         ]);
         return $game;
     }
