@@ -1,7 +1,7 @@
 <div>
     <div class="bg-white max-w-min mx-auto my-8 grid shadow-xl px-5 py-2">
         <h1 class="text-center text-2xl">Game {{ $game['id'] }}</h1>
-        @foreach (array_reverse($game['board']) as $row)
+        @foreach (array_reverse(json_decode($game['board'])) as $row)
             <div class="flex justify-center">
                 @foreach ($row as $emoji)
                     {{-- Disable button if $game['turn'] == $loop->index --}}
