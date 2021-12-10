@@ -36,11 +36,4 @@ class SelectedEmojiControllerTest extends TestCase
         // Make sure the emoji_id didn't get set in session
         $this->assertNull(session()->get('emoji_id'));
     }
-
-    public function test_get_request()
-    {
-        $response = $this->get('/selected-emoji');
-        $response->assertStatus(200);
-        $response->assertJson(['emoji_id' => 0, 'emoji' => '']);
-    }
 }

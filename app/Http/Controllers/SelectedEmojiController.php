@@ -39,10 +39,7 @@ class SelectedEmojiController extends Controller
             ], 400);
         }
         session(['emoji_id' => $emoji_id]);
-        return [
-            'emoji' => $this->emoji_map[$emoji_id],
-            'emoji_id' => $emoji_id,
-        ];
+        return redirect()->back();
     }
 
     public function getEmoji($emoji_id)
@@ -51,5 +48,10 @@ class SelectedEmojiController extends Controller
             'emoji' => $this->emoji_map[$emoji_id],
             'emoji_id' => $emoji_id,
         ];
+    }
+
+    public function getEmojiMap()
+    {
+        return $this->emoji_map;
     }
 }
