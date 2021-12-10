@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\GameDatabaseController;
-use App\Rules\LegalGuess;
+use App\Rules\LegalEmoji;
 
 class MastermindGameController extends Controller
 {
@@ -24,20 +24,18 @@ class MastermindGameController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'guess' => ['required', 'string', new LegalGuess],
+            'emoji_id' => ['required', 'string', new LegalEmoji],
+            'slot' => ['required', 'integer', 'min:0', 'max:3'],
         ]);
 
         $db = new GameDatabaseController();
         $game = $db->get($id);
-        // Make every characer of the guess a seperate element in an array
-        $str_guesses = str_split($request->input('guess'));
-        $int_guesses = [];
-        foreach ($str_guesses as $char) {
-            array_push($int_guesses, intval($char));
-        }
+
+        $slot = (int)$request->input('slot');
+        $emoji_id = $request->input('emoji_id');
 
         $board = json_decode($game['board']);
-        $board[$game["turn"]] = $int_guesses;
+        $board[$game["turn"]][$slot] = $emoji_id;
         $game['board'] = json_encode($board);
         $db->update($game);
         return view('mastermind.game', ['game' => $game]);
