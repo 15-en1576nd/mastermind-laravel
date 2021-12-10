@@ -13,6 +13,7 @@
                         <button
                             class="w-8 h-8 m-1 border rounded hover:bg-gray-400 disabled:opacity-50 {{ 11 - $game['turn'] !== $loop->parent->index ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-300' }}"
                             type="submit"
+                            {{ 11 - $game['turn'] !== $loop->parent->index ? 'disabled' : '' }}
                         >
                             {{app('App\Http\Controllers\SelectedEmojiController')->getEmoji($emoji_id)["emoji"]}}
                         </button>
