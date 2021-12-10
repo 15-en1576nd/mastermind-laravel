@@ -18,8 +18,8 @@ class GameDatabaseController extends Controller
         }
         $game = GameStore::create([
             'code' => join('', $code),
-            'board' => $empty_board,
-            'hints' => $empty_board,
+            'board' => json_encode($empty_board),
+            'hints' => json_encode($empty_board),
             'lost' => 0,
             'won' => 0,
             'turn' => 0,
