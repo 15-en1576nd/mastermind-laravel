@@ -36,7 +36,9 @@ class MastermindGameController extends Controller
             array_push($int_guesses, intval($char));
         }
 
-        $game["board"][$game["turn"]] = $int_guesses;
+        $board = json_decode($game['board']);
+        $board[$game["turn"]] = $int_guesses;
+        $game['board'] = json_encode($board);
         $db->update($game);
         return view('mastermind.game', ['game' => $game]);
     }
