@@ -18,8 +18,9 @@ class SelectedEmojiController extends Controller
         8 => '😒',
     ];
 
-    public function index(Request $request) {
-        $emoji_id = session('emoji_id') || 0;
+    public function index()
+    {
+        $emoji_id = session('emoji_id', 2);
         $emoji = $this->emoji_map[$emoji_id];
 
         return [
