@@ -44,4 +44,12 @@ class SelectedEmojiController extends Controller
             'emoji_id' => $emoji_id,
         ];
     }
+
+    public function getEmoji($emoji_id)
+    {
+        return [
+            'emoji' => $this->emoji_map[$emoji_id],
+            'emoji_id' => $emoji_id,
+        ];
+    }
 }
