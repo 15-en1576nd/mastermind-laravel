@@ -33,15 +33,12 @@ class MastermindGameControllerTest extends TestCase
     {
         $game_url = $this->get('/game/create')->getTargetUrl();
 
-        $response = $this->json('PUT', $game_url, ['guess' => '6546']);
+        $response = $this->json('PUT', $game_url, ['emoji_id' => '6', 'slot' => '1']);
         $response->assertStatus(200);
 
         // Make sure that the guess actually persisted
         $response = $this->get($game_url);
-        $response->assertSee('6');
-        $response->assertSee('5');
-        $response->assertSee('4');
-        $response->assertSee('6');
+        $response->assertSee('😁');
     }
 
     public function testUpdateInvalidGuess()
