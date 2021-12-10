@@ -12,4 +12,5 @@
 
 <body>
     <x-gameboard :game="$game" />
+    <x-emojipicker />
 </body>
