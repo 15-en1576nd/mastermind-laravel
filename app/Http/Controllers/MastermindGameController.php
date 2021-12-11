@@ -64,6 +64,7 @@ class MastermindGameController extends Controller
         // Update game
         $game['hints'] = json_encode($hints);
         $game['turn'] = $game["turn"] + 1;
+        $db->update($game);
         return redirect()->back();
     }
 }
