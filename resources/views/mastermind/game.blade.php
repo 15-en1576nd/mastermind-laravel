@@ -9,6 +9,8 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
     <title>{{ config('app.name') }} - game</title>
+    <meta name="description" content="Can I guess the {{ $game->length }} Emoji long code in 12 guesses?">
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>

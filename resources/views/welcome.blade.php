@@ -7,6 +7,8 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
         <title>{{config('app.name')}} - {{__('shorts.instructions')}}</title>
+        <meta name="description" content="MojiMind is a modern take on the classic game of MasterMind with Emojis. Can you break the code in the limited number of turns?">
+        <meta name="robots" content="index, nofollow">
     </head>
     <body class="antialiased">
         <x-nav />
