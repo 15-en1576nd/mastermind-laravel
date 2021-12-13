@@ -8,6 +8,7 @@
         <title>{{config('app.name')}} - {{__('shorts.instructions')}}</title>
     </head>
     <body class="antialiased">
+        <x-nav />
         <h1 class="text-6xl text-gray-800 mx-auto max-w-max my-8">{{config('app.name')}}</h1>
         <div class="flex justify-around max-w-max mx-auto my-5">
             <a
