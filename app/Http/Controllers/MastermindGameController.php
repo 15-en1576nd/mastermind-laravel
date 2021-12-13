@@ -11,7 +11,20 @@ class MastermindGameController extends Controller
     public function create(Request $request)
     {
         $db = new GameDatabaseController();
-        $game = $db->store();
+        switch ($request->input('difficulty')) {
+            case 'easy':
+                $game = $db->store(4);
+                break;
+            case 'medium':
+                $game = $db->store(5);
+                break;
+            case 'hard':
+                $game = $db->store(6);
+                break;
+            default:
+                $game = $db->store(4);
+                break;
+        }
         return redirect('/game/' . $game["id"]);
     }
 
@@ -23,13 +36,13 @@ class MastermindGameController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'emoji_id' => ['required', 'string', new LegalEmoji],
-            'slot' => ['required', 'integer', 'min:0', 'max:3'],
-        ]);
-
         $db = new GameDatabaseController();
         $game = $db->get($id);
+
+        $request->validate([
+            'emoji_id' => ['required', 'string', new LegalEmoji],
+            'slot' => ['required', 'integer', 'min:0', 'max:' . ($game->length - 1)],
+        ]);
 
         $slot = (int)$request->input('slot');
         $emoji_id = $request->input('emoji_id');
@@ -49,7 +62,7 @@ class MastermindGameController extends Controller
         $board = json_decode($game['board']);
         $guess = $board[$game["turn"]];
         // Generate hints
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < $game->length; $i++) {
             if ($guess[$i] == $game["code"][$i]) {
                 // Exact match
                 $hints[$game["turn"]][$i] = 1;
