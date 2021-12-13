@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name') . " - " . __('shorts.instructions'))
+@section('title', __('shorts.instructions'))
 @section('description', "MojiMind is a modern take on the classic game of MasterMind with Emojis. Can you break the code in the limited number of turns?")
 @section('robots', 'index, follow')
 
