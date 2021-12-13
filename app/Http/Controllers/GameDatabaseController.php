@@ -31,17 +31,6 @@ class GameDatabaseController extends Controller
         ]);
         return $game;
     }
-    function update($game){
-        $gameupdate = GameStore::find($game['id']);
-        $gameupdate->code = $game['code'];
-        $gameupdate->board = $game['board'];
-        $gameupdate->hints = $game['hints'];
-        $gameupdate->lost = $game['lost'];
-        $gameupdate->won = $game['won'];
-        $gameupdate->turn = $game['turn'];
-        $gameupdate->save();
-        return $gameupdate;
-    }
     function get($id){
         $gameupdate = GameStore::find($id);
         return $gameupdate;

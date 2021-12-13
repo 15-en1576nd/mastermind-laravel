@@ -50,7 +50,7 @@ class MastermindGameController extends Controller
         $board = json_decode($game['board']);
         $board[$game["turn"]][$slot] = $emoji_id;
         $game['board'] = json_encode($board);
-        $db->update($game);
+        $game->save();
         return view('mastermind.game', ['game' => $game]);
     }
 
@@ -77,7 +77,7 @@ class MastermindGameController extends Controller
         // Update game
         $game['hints'] = json_encode($hints);
         $game['turn'] = $game["turn"] + 1;
-        $db->update($game);
+        $game->save();
         return redirect()->back();
     }
 }
