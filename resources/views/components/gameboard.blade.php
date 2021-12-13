@@ -17,7 +17,7 @@
         @foreach ($reversed_board as $row)
             <div class="flex justify-center">
                 @foreach ($row as $emoji_id)
-                    {{-- Disable button if it is not the current turn --}}
+                    {{-- Use a form for each Emoji slot so we can use it to POST to the game on click --}}
                     <form action="/game/{{$game->id}}" method="POST" class="m-0">
                         @csrf
                         @method('PATCH')
