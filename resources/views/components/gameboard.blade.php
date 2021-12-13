@@ -37,7 +37,7 @@
                             "bg-gray-400 hover:bg-gray-600" => $is_current_turn,
                             ])
                         type="submit"
-                        disabled="{{ !$is_current_turn }}"
+                        {{ $is_current_turn ? "" : "disabled" }}
                     >
                         {{-- Show the Emoji corresponding to the current slot --}}
                         {{$emoji_controller->getEmoji($emoji_id)["emoji"]}}
