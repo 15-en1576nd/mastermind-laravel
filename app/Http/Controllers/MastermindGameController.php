@@ -50,7 +50,7 @@ class MastermindGameController extends Controller
         $board = json_decode($game['board']);
         $board[$game["turn"]][$slot] = $emoji_id;
         $game['board'] = json_encode($board);
-        $db->update($game);
+        $game->save();
         return view('mastermind.game', ['game' => $game]);
     }
 
@@ -58,6 +58,10 @@ class MastermindGameController extends Controller
     {
         $db = new GameDatabaseController();
         $game = $db->get($id);
+        // Return the game if the game is over
+        if ($game['lost'] == 1 || $game['won'] == 1) {
+            return view('mastermind.game', ['game' => $game]);
+        }
         $hints = json_decode($game['hints']);
         $board = json_decode($game['board']);
         $guess = $board[$game["turn"]];
@@ -77,7 +81,19 @@ class MastermindGameController extends Controller
         // Update game
         $game['hints'] = json_encode($hints);
         $game['turn'] = $game["turn"] + 1;
-        $db->update($game);
+
+        // If the game is now over, either update won or lost
+        if ($game["turn"] == 12) {
+            if ($hints[$game["turn"] - 1] == array_fill(0, $game->length, 1)) {
+                $game['won'] = 1;
+            } else {
+                $game['lost'] = 1;
+            }
+            // Score is updated_at - created-at (in seconds) divided by turns * 100
+            // and rounded off to integer just to make it look more interesting
+            $game['score'] = round($game->updated_at->diffInSeconds($game->created_at) / $game["turn"] * 100);
+        }
+        $game->save();
         return redirect()->back();
     }
 }

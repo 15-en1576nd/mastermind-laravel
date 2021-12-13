@@ -23,4 +23,5 @@
         @csrf
         <button type="submit">{{ strtoupper(__('shorts.guess')) }}</button>
     </form>
+    <x-scoreboard :game="$game" />
 </body>
