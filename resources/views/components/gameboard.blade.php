@@ -6,7 +6,7 @@
             <div class="flex justify-center">
                 @foreach ($row as $emoji_id)
                     {{-- Disable button if $game['turn'] == $loop->index --}}
-                    <form action="/game/{{$game->id}}" method="POST">
+                    <form action="/game/{{$game->id}}" method="POST" class="m-0">
                         @csrf
                         @method('PATCH')
                         <input type="hidden" name="emoji_id" value="{{app('App\Http\Controllers\SelectedEmojiController')->index()["emoji_id"]}}">
