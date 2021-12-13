@@ -1,6 +1,7 @@
 <div>
     <div class="bg-white max-w-min mx-auto my-8 grid shadow-xl px-5 py-2">
         <h1 class="text-center text-2xl">Game {{ $game['id'] }}</h1>
+        <x-socialmediabuttons :game="$game" />
         @foreach (array_reverse(json_decode($game['board'])) as $row)
             <div class="flex justify-center">
                 @foreach ($row as $emoji_id)
