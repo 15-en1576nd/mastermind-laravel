@@ -6,6 +6,8 @@
         <link rel="stylesheet" href=" {{ asset('css/app.css') }} ">
         <script src="{{ asset('js/app.js') }}"></script>
         <title>{{config('app.name')}} - {{__('shorts.instructions')}}</title>
+        <meta name="description" content="MojiMind is a modern take on the classic game of MasterMind with Emojis. Can you break the code in the limited number of turns?">
+        <meta name="robots" content="index, nofollow">
     </head>
     <body class="antialiased">
         <x-nav />
