@@ -8,6 +8,8 @@
     <link rel="stylesheet" href=" {{ asset('css/app.css') }} ">
     <script src="{{ asset('js/app.js') }}"></script>
     <title>{{ config('app.name') }} - game</title>
+    <meta name="description" content="Can I guess the {{ $game->length }} Emoji long code in 12 guesses?">
+    <meta name="robots" content="noindex, nofollow">
 </head>
 
 <body>
