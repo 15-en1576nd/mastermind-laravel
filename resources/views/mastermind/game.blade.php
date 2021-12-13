@@ -13,4 +13,11 @@
 <body>
     <x-gameboard :game="$game" />
     <x-emojipicker />
+    {{-- Submit Button --}}
+    <form action={{ "/game/" . $game->id . "/guess"}}
+        method="POST"
+        class="mx-auto max-w-max bg-purple-500 rounded text-white text-2xl font-medium p-2">
+        @csrf
+        <button type="submit">{{ strtoupper(__('shorts.guess')) }}</button>
+    </form>
 </body>

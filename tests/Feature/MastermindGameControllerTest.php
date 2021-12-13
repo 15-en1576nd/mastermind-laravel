@@ -39,6 +39,11 @@ class MastermindGameControllerTest extends TestCase
         // Make sure that the guess actually persisted
         $response = $this->get($game_url);
         $response->assertSee('😁');
+
+        // Attempt a guess, which should redirect back
+        $response = $this->post($game_url . '/guess');
+        $response->assertStatus(302);
+        $response->assertRedirect($game_url);
     }
 
     public function testUpdateInvalidGuess()

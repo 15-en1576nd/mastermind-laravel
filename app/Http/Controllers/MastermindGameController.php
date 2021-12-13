@@ -40,4 +40,31 @@ class MastermindGameController extends Controller
         $db->update($game);
         return view('mastermind.game', ['game' => $game]);
     }
+
+    public function guess(Request $request, $id)
+    {
+        $db = new GameDatabaseController();
+        $game = $db->get($id);
+        $hints = json_decode($game['hints']);
+        $board = json_decode($game['board']);
+        $guess = $board[$game["turn"]];
+        // Generate hints
+        for ($i = 0; $i < 4; $i++) {
+            if ($guess[$i] == $game["code"][$i]) {
+                // Exact match
+                $hints[$game["turn"]][$i] = 1;
+            } elseif (in_array($guess[$i], str_split($game["code"]))) {
+                // Partial match
+                $hints[$game["turn"]][$i] = 2;
+            } else {
+                // No match
+                $hints[$game["turn"]][$i] = 0;
+            }
+        }
+        // Update game
+        $game['hints'] = json_encode($hints);
+        $game['turn'] = $game["turn"] + 1;
+        $db->update($game);
+        return redirect()->back();
+    }
 }

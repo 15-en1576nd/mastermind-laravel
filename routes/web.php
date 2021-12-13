@@ -26,4 +26,6 @@ Route::get('language/{locale}', function ($locale) {
 });
 
 Route::resource('selected-emoji', SelectedEmojiController::class);
+// POST to /game/$id/guess
+Route::post('game/{id}/guess', [MastermindGameController::class, 'guess']);
 Route::resource('game', MastermindGameController::class);
