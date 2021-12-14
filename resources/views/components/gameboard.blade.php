@@ -4,8 +4,10 @@
 
     @php
         $board = json_decode($game['board']);
+        $hints = json_decode($game['hints']);
         // array_reverse is used so when ran in a for each loop, the first item in the array is the last row of the game
         $reversed_board = array_reverse($board);
+        $reversed_hints = array_reverse($hints);
     @endphp
 
     @php
@@ -46,6 +48,7 @@
                     </p>
                 @endif
             @endforeach
+            <x-gamehints :hints="$reversed_hints[$loop->index]" />
         </div>
     @endforeach
 </div>
