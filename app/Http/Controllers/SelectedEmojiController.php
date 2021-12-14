@@ -18,17 +18,32 @@ class SelectedEmojiController extends Controller
         8 => '😒',
     ];
 
-    public function index()
+    /**
+     * Get the selected Emoji.
+     *
+     * @return string
+     */
+    public function getSelectedEmoji()
     {
         $emoji_id = session('emoji_id', 0);
-        $emoji = $this->emoji_map[$emoji_id];
-
-        return [
-            'emoji' => $emoji,
-            'emoji_id' => $emoji_id,
-        ];
+        return $this->emoji_map[$emoji_id];
     }
 
+    /**
+     * Get the selected Emoji id.
+     *
+     * @return int
+     */
+    public function getSelectedEmojiId()
+    {
+        return session('emoji_id', 0);
+    }
+
+    /**
+     * Set the selected Emoji id and redirect back.
+     *
+     * @return void
+     */
     public function store(Request $request) {
         $emoji_id = $request->input('emoji_id');
         // Make sure the emoji_id is valid
@@ -42,14 +57,21 @@ class SelectedEmojiController extends Controller
         return redirect()->back();
     }
 
-    public function getEmoji($emoji_id)
+    /**
+     * Get an Emoji by id from the emoji_map.
+     *
+     * @return string
+     */
+    public function getEmojiFromId($emoji_id)
     {
-        return [
-            'emoji' => $this->emoji_map[$emoji_id],
-            'emoji_id' => $emoji_id,
-        ];
+        return $this->emoji_map[$emoji_id];
     }
 
+    /**
+     * Get the emoji_map.
+     *
+     * @return array
+     */
     public function getEmojiMap()
     {
         return $this->emoji_map;
