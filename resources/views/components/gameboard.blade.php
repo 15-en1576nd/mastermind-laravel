@@ -10,7 +10,7 @@
 
     @php
         $emoji_controller = app('App\Http\Controllers\SelectedEmojiController');
-        $selected_emoji_id = $emoji_controller->index()["emoji_id"];
+        $selected_emoji_id = $emoji_controller->getSelectedEmojiId();
     @endphp
 
     @foreach ($reversed_board as $row)
@@ -36,13 +36,13 @@
                             type="submit"
                         >
                             {{-- Show the Emoji corresponding to the current slot --}}
-                            {{$emoji_controller->getEmoji($emoji_id)["emoji"]}}
+                            {{$emoji_controller->getEmojiFromId($emoji_id)}}
                         </button>
                     </form>
                 @else
                     <p class="w-8 h-8 m-1 border rounded bg-gray-200 hover:bg-gray-400 cursor-not-allowed">
                         {{-- Show the Emoji corresponding to the current slot --}}
-                        {{$emoji_controller->getEmoji($emoji_id)["emoji"]}}
+                        {{$emoji_controller->getEmojiFromId($emoji_id)}}
                     </p>
                 @endif
             @endforeach
