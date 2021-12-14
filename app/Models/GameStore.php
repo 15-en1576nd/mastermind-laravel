@@ -13,6 +13,7 @@ class GameStore extends Model
         'code',
         'board',
         'hints',
+        'length',
         'lost',
         'won',
         'turn',
