@@ -19,16 +19,16 @@ class MastermindGameController extends Controller
         $db = new GameDatabaseController();
         switch ($request->input('difficulty')) {
             case 'easy':
-                $game = $db->store(4);
+                $game = $db->makeNewGame(4);
                 break;
             case 'medium':
-                $game = $db->store(5);
+                $game = $db->makeNewGame(5);
                 break;
             case 'hard':
-                $game = $db->store(6);
+                $game = $db->makeNewGame(6);
                 break;
             default:
-                $game = $db->store(4);
+                $game = $db->makeNewGame(4);
                 break;
         }
         return redirect('/game/' . $game["id"]);
@@ -42,7 +42,7 @@ class MastermindGameController extends Controller
     public function show(Request $request, $id)
     {
         $db = new GameDatabaseController();
-        return view('mastermind.game', ['game' => $db->get($id)]);
+        return view('mastermind.game', ['game' => $db->getGameByID($id)]);
     }
 
     /**
@@ -53,7 +53,7 @@ class MastermindGameController extends Controller
     public function update(Request $request, $id)
     {
         $db = new GameDatabaseController();
-        $game = $db->get($id);
+        $game = $db->getGameByID($id);
 
         $request->validate([
             'emoji_id' => ['required', 'string', new LegalEmoji],
@@ -79,7 +79,7 @@ class MastermindGameController extends Controller
     public function guess(Request $request, $id)
     {
         $db = new GameDatabaseController();
-        $game = $db->get($id);
+        $game = $db->getGameByID($id);
         // Return the game if the game is over
         if ($game['lost'] == 1 || $game['won'] == 1) {
             return view('mastermind.game', ['game' => $game]);
