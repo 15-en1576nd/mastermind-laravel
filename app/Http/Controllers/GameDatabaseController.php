@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class GameDatabaseController extends Controller
 {
-    function store($length)
+    function makeNewGame($length)
     {
         $empty_board = [];
         for ($i = 0; $i < 12; $i++) {
@@ -31,7 +31,8 @@ class GameDatabaseController extends Controller
         ]);
         return $game;
     }
-    function get($id){
+    function getGameByID($id)
+    {
         $gameupdate = GameStore::find($id);
         return $gameupdate;
     }
