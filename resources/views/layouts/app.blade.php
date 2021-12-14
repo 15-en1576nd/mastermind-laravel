@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
         <title>{{ config('app.name') }} - @yield('title')</title>
         <meta charset="utf-8">
