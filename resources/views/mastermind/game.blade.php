@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href=" {{ asset('css/app.css') }} ">
-    <script src="{{ asset('js/app.js') }}"></script>
-    <link href="https://pro.fontawesome.com/releases/v5.13.1/css/all.css" rel="stylesheet">
-    <title>{{ config('app.name') }} - game</title>
-    <meta name="description" content="Can I guess the {{ $game->length }} Emoji long code in 12 guesses?">
-    <meta name="robots" content="noindex, nofollow">
-</head>
+@section('title', "Game #" . $game->id)
+@section('description', "Can I guess the " . $game->length . " Emoji long code in 12 guesses?")
+@section('robots', 'index, nofollow')
 
-<body>
+@section('content')
     <x-gameboard :game="$game" />
     <x-emojipicker />
     {{-- Submit Button --}}
@@ -24,4 +15,4 @@
         <button type="submit">{{ strtoupper(__('shorts.guess')) }}</button>
     </form>
     <x-scoreboard :game="$game" />
-</body>
+@endsection
