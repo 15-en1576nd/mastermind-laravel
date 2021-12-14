@@ -8,6 +8,12 @@ use App\Rules\LegalEmoji;
 
 class MastermindGameController extends Controller
 {
+    /**
+     * Create a new mastermind game instance with the given difficulty
+     * and redirect to the game page with the game id.
+     *
+     * @return void
+     */
     public function create(Request $request)
     {
         $db = new GameDatabaseController();
@@ -28,12 +34,22 @@ class MastermindGameController extends Controller
         return redirect('/game/' . $game["id"]);
     }
 
+    /**
+     * Get the game with the given id and display it in the mastermind.game view.
+     *
+     * @return void
+     */
     public function show(Request $request, $id)
     {
         $db = new GameDatabaseController();
         return view('mastermind.game', ['game' => $db->get($id)]);
     }
 
+    /**
+     * The function for changing the Emoji in a lot. The Emoji is derived from the request.
+     *
+     * @return void
+     */
     public function update(Request $request, $id)
     {
         $db = new GameDatabaseController();
@@ -54,6 +70,12 @@ class MastermindGameController extends Controller
         return view('mastermind.game', ['game' => $game]);
     }
 
+    /**
+     * The function for making and checking the guess. The guess is derived from the database.
+     * The function returns the game with the updated board and hints.
+     *
+     * @return void
+     */
     public function guess(Request $request, $id)
     {
         $db = new GameDatabaseController();
