@@ -6,17 +6,15 @@ use Illuminate\View\Component;
 
 class emojipicker extends Component
 {
+    public $game;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($game)
     {
-        /// Use this whenever it's fixed
-        // $emoji_controller = app('App\Http\Controllers\SelectedEmojiController');
-        // $this->selected = $emoji_controller->index()["emoji_id"];
-        // $this->emoji_map = $emoji_controller->getEmojiMap();
+        $this->game = $game;
     }
 
     /**
