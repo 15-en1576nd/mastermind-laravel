@@ -17,6 +17,7 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->integer('code_length');
             $table->integer('score');
+            $table->integer('turn');
             $table->timestamps();
         });
     }
