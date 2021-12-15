@@ -30,7 +30,7 @@ class UpdateSlotTest extends TestCase
             'value' => 1,
         ]);
 
-        $response->assertStatus(200);
+        $response->assertRedirect();
         // Make sure database was updated
         $this->assertEquals(1, \App\Models\Slot::find($slot->id)->value);
 
