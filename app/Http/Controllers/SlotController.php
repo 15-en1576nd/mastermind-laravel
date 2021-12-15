@@ -15,7 +15,8 @@ class SlotController extends Controller
      */
     public function index()
     {
-        //
+        // No need to implement this, since noone should be able to see all slots.
+        abort(404);
     }
 
     /**
@@ -25,7 +26,8 @@ class SlotController extends Controller
      */
     public function create()
     {
-        //
+        // No need to implement this, since noone should be able to create a slot.
+        abort(404);
     }
 
     /**
@@ -36,7 +38,8 @@ class SlotController extends Controller
      */
     public function store(StoreSlotRequest $request)
     {
-        //
+        // No need to implement this, since noone should be able to create a slot.
+        abort(404);
     }
 
     /**
@@ -47,7 +50,7 @@ class SlotController extends Controller
      */
     public function show(Slot $slot)
     {
-        //
+        // No need to implement this, since noone should be able to get a slot.
     }
 
     /**
@@ -58,7 +61,8 @@ class SlotController extends Controller
      */
     public function edit(Slot $slot)
     {
-        //
+        // No need to implement this, since the edit page is the game page.
+        abort(404);
     }
 
     /**
@@ -70,7 +74,9 @@ class SlotController extends Controller
      */
     public function update(UpdateSlotRequest $request, Slot $slot)
     {
-        //
+        // Update the slot with validated data.
+        $slot->update($request->validated());
+        return redirect()->route('games.show', $slot->row->game);
     }
 
     /**
@@ -81,6 +87,7 @@ class SlotController extends Controller
      */
     public function destroy(Slot $slot)
     {
-        //
+        // No need to implement this, since noone should be able to delete a slot.
+        abort(404);
     }
 }
