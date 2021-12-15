@@ -13,7 +13,8 @@ class UpdateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // For now, every user can update a game.
+        return true;
     }
 
     /**
