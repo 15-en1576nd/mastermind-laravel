@@ -15,6 +15,7 @@ All games are stored in a database. The games table looks like this:
 game
 ---
 id INDEX int
+code TEXT
 code_length int
 score NULL int
 turn int
