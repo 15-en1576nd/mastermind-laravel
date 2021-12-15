@@ -18,10 +18,9 @@ id INDEX int
 code_length int
 score NULL int
 turn int
+selected_emoji int
 # Static virtual field in the model definition
 emoji_map VIRTUAL
-# Stored in session, but added to model
-selected_emoji VIRTUAL
 
 row
 ---

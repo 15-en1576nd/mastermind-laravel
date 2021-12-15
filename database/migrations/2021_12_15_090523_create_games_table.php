@@ -18,6 +18,7 @@ class CreateGamesTable extends Migration
             $table->integer('code_length');
             $table->integer('score');
             $table->integer('turn');
+            $table->integer('selected_emoji');
             $table->timestamps();
         });
     }
