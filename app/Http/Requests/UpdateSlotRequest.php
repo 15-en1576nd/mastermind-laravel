@@ -13,7 +13,8 @@ class UpdateSlotRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // For now we allow anyone to update a slot. We will change this to per user later.
+        return true;
     }
 
     /**
