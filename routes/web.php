@@ -26,4 +26,4 @@ Route::get('language/{locale}', function ($locale) {
 });
 
 Route::resource('selected-emoji', SelectedEmojiController::class);
-Route::resource('game', GameController::class);
+Route::resource('games', GameController::class);
