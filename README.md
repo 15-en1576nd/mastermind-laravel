@@ -14,7 +14,7 @@ All games are stored in a database. The games table looks like this:
 ```bash
 game
 ---
-game_id INDEX int
+id INDEX int
 code_length int
 score NULL int
 # Static virtual field in the model definition
@@ -24,14 +24,15 @@ selected_emoji VIRTUAL
 
 row
 ---
+id INDEX AUTOINCREMENT int
 # A game has many rows
-game_id INDEX int FK >- game.game_id
+game_id INDEX int FK >- game.id
 
 slot
 ---
+id INDEX AUTOINCREMENT int
 # A row has many slots
-row_id INDEX int FK >- row.game_id
-slot_id INDEX AUTOINCREMENT int
+row_id INDEX int FK >- row.id
 # Value of 0-8 which can be looked up in
 # the game->emoji_map
 value int
