@@ -13,6 +13,7 @@ class StoreSlotRequest extends FormRequest
      */
     public function authorize()
     {
+        // Noone in their right mind wants to create a slot by themselves.
         return false;
     }
 
