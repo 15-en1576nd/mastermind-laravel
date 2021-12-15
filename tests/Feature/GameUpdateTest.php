@@ -18,18 +18,22 @@ class GameUpdateTest extends TestCase
         $response = $this->post('/games', [
             'code_length' => 4,
         ]);
+
+        $response->assertRedirect();
+
         $url = $response->headers->get('Location');
-        $id = substr($url, strrpos($url, '/') + 1);
+        $url_parts = explode('/', $url);
+        $id = (int)$url_parts[count($url_parts) - 1];
 
         $response = $this->put("/games/$id", [
             'selected_emoji' => 1,
         ]);
 
+        $response->assertRedirect("/games/$id");
+
         $this->assertDatabaseHas('games', [
             'id' => $id,
             'selected_emoji' => 1,
         ]);
-
-        $response->assertStatus(200);
     }
 }
