@@ -15,7 +15,7 @@ class UpdateSlotTest extends TestCase
      */
     public function test_a_slot_can_be_updated()
     {
-        $response = $this->post('/api/games', [
+        $response = $this->post('/games', [
             'code_length' => 4,
         ]);
         $response->assertRedirect();
