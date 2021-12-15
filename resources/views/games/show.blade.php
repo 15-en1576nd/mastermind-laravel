@@ -6,13 +6,12 @@
 
 @section('content')
     <x-gameboard :game="$game" />
-    <x-emojipicker />
+    <x-emojipicker :game="$game" />
     {{-- Submit Button --}}
-    <form action={{ "/game/" . $game->id . "/guess"}}
-        method="POST"
-        class="mx-auto max-w-max bg-purple-500 rounded text-white text-2xl font-medium p-2">
+    <form action="{{ route('games.update', $game) }}" method="POST" class="max-w-max mx-auto">
         @csrf
-        <button type="submit">{{ strtoupper(__('shorts.guess')) }}</button>
+        @method('PUT')
+        <button type="submit" class="bg-purple-500 rounded text-white text-2xl font-medium p-2">{{ strtoupper(__('shorts.guess')) }}</button>
     </form>
     <x-scoreboard :game="$game" />
 @endsection
