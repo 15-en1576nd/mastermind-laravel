@@ -16,9 +16,9 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->integer('code_length');
-            $table->integer('score');
-            $table->integer('turn');
-            $table->integer('selected_emoji');
+            $table->integer('score')->nullable();
+            $table->integer('turn')->default(0);
+            $table->integer('selected_emoji')->default(0);
             $table->timestamps();
         });
     }

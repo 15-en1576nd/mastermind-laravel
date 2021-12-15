@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Game extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'code_length',
+        'selected_emoji',
+        'turn',
+    ];
 }
