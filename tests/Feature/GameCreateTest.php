@@ -31,6 +31,11 @@ class GameCreateTest extends TestCase
             'id' => $id,
             'code_length' => 4,
         ]);
+
+        // Make sure the game has 12 rows
+        $this->assertDatabaseHas('rows', [
+            'game_id' => $id,
+        ]);
     }
 
     /**
