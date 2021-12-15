@@ -24,8 +24,7 @@ class UpdateGameRequest extends FormRequest
     public function rules()
     {
         return [
-            "board.{$this->game->board[$this->game->turn]}" => 'required|array',
-            "board.{$this->game->board[$this->game->turn]}.x" => "required|integer|min:0|max:{$this->game->code_length}",
+            'selected_emoji' => 'required|integer|min:1|max:8',
         ];
     }
 }
