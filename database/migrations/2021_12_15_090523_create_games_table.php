@@ -20,6 +20,8 @@ class CreateGamesTable extends Migration
             $table->integer('score')->nullable();
             $table->integer('turn')->default(0);
             $table->integer('selected_emoji')->default(0);
+            $table->boolean('won')->default(false);
+            $table->boolean('lost')->default(false);
             $table->timestamps();
         });
     }

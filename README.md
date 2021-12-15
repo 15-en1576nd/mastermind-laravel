@@ -20,6 +20,8 @@ code_length int
 score NULL int
 turn int
 selected_emoji int
+won bool
+lost bool
 # Static virtual field in the model definition
 emoji_map VIRTUAL
 
