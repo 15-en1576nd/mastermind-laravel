@@ -9,6 +9,10 @@ class Row extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'game_id',
+    ];
+
     public function game()
     {
         return $this->belongsTo(Game::class);
