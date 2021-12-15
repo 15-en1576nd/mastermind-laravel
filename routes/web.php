@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\SlotController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,4 @@ Route::get('language/{locale}', function ($locale) {
 });
 
 Route::resource('games', GameController::class);
+Route::resource('slots', SlotController::class);
