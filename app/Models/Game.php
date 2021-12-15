@@ -14,4 +14,9 @@ class Game extends Model
         'selected_emoji',
         'turn',
     ];
+
+    public function rows()
+    {
+        return $this->hasMany(Row::class);
+    }
 }
