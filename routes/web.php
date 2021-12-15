@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SelectedEmojiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +24,4 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 });
 
-Route::resource('selected-emoji', SelectedEmojiController::class);
 Route::resource('games', GameController::class);
