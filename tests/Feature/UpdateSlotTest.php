@@ -39,7 +39,7 @@ class UpdateSlotTest extends TestCase
             'value' => 9,
         ]);
 
-        $response->assertStatus(422);
+        $response->assertRedirect();
         // Make sure database was not updated
         $this->assertEquals(1, \App\Models\Slot::find($slot->id)->value);
     }
