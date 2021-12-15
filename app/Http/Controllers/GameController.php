@@ -41,7 +41,7 @@ class GameController extends Controller
         // Create a new game.
         $game = Game::create($request->validated());
         // Redirect to the game's page.
-        return redirect($game->path());
+        return redirect()->route('games.show', $game);
     }
 
     /**
@@ -65,7 +65,7 @@ class GameController extends Controller
     public function edit(Game $game)
     {
         // The games show page is the page used for editing the game.
-        return redirect($game->path());
+        return redirect()->route('games.show', $game);
     }
 
     /**
@@ -80,7 +80,7 @@ class GameController extends Controller
         // Update the game.
         $game->update($request->validated());
         // Redirect to the game's page.
-        return redirect($game->path());
+        return redirect()->route('games.show', $game);
     }
 
     /**
