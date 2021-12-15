@@ -32,4 +32,23 @@ class GameCreateTest extends TestCase
             'code_length' => 4,
         ]);
     }
+
+    /**
+     * Test if the game can be created with invalid data.
+     *
+     * @return void
+     */
+    public function test_game_create_invalid()
+    {
+        $response = $this->post('/games', [
+            'code_length' => 'abc',
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertRedirect();
+
+        $this->assertDatabaseMissing('games', [
+            'code_length' => 'abc',
+        ]);
+    }
 }
