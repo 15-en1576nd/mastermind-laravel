@@ -29,6 +29,7 @@ class GameCreateTest extends TestCase
         // Make sure it is in the database
         $this->assertDatabaseHas('games', [
             'id' => $id,
+            'code_length' => 4,
         ]);
     }
 }
