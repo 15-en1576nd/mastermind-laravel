@@ -25,7 +25,7 @@ class UpdateSlotRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'value' => 'required|integer|between:1,8',
         ];
     }
 }
