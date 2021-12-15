@@ -36,6 +36,10 @@ class GameCreateTest extends TestCase
         $this->assertDatabaseHas('rows', [
             'game_id' => $id,
         ]);
+
+        // Get the first row and make sure it has 4 slots
+        $row = \App\Models\Row::where('game_id', $id)->first();
+        $this->assertEquals(4, $row->slots->count());
     }
 
     /**
