@@ -34,7 +34,7 @@
                     </p>
                 @endif
             @endforeach
-            <x-gamehints :hints="$reversed_hints[$loop->index]" />
+            <x-gamehints :slots="$row->slots" />
         </div>
     @endforeach
 </div>
