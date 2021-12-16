@@ -10,19 +10,38 @@ Everyone has read access to this page. But only the game creator can write to it
 
 All games are stored in a database. The games table looks like this:
 
-```sql
-CREATE TABLE games (
-  id TEXT PRIMARY KEY,
-  code TEXT,
-  board TEXT, -- JSON object with the board. The board is an array of arrays. Each array is a row. Each row is an array of Emojis(in integer form).
-  hints TEXT, -- JSON object with the hints. The hints are an array of arrays. Each array is a row. Each row is an array of integers ranging from 0 to 2. With 0 being no hint, 1 being an exact match and 2 being a partial match.
-  lost INTEGER, -- 0 or 1
-  won INTEGER, -- 0 or 1
-  turn INTEGER, -- should be pretty obvious what this is... Right?
-  owner_id number, -- Add later on when we do user authentication
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+<!-- Bash has closest syntax highlighting -->
+```bash
+game
+---
+id INDEX int
+code TEXT
+code_length int
+score NULL int
+turn int
+selected_emoji int
+won bool
+lost bool
+# Static virtual field in the model definition
+emoji_map VIRTUAL
+
+row
+---
+id INDEX AUTOINCREMENT int
+# A game has many rows
+game_id INDEX int FK >- game.id
+
+slot
+---
+id INDEX AUTOINCREMENT int
+# A row has many slots
+row_id INDEX int FK >- row.id
+# Value of 0-8 which can be looked up in
+# the game->emoji_map
+value int
+# A hint is either 0, 1 or 2. Where 0 is no
+# hint, 1 is exact and 2 is partial
+hint int
 ```
 
 Table for users:

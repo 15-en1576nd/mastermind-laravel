@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\MastermindGameController;
+use App\Http\Controllers\GameController;
+use App\Http\Controllers\SlotController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SelectedEmojiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +25,5 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 });
 
-Route::resource('selected-emoji', SelectedEmojiController::class);
-// POST to /game/$id/guess
-Route::post('game/{id}/guess', [MastermindGameController::class, 'guess']);
-Route::resource('game', MastermindGameController::class);
+Route::resource('games', GameController::class);
+Route::resource('slots', SlotController::class);
