@@ -74,6 +74,10 @@ class SlotController extends Controller
      */
     public function update(UpdateSlotRequest $request, Slot $slot)
     {
+        // If game is over, noone should be able to update a slot.
+        if ($slot->row->game->lost || $slot->row->game->won) {
+            abort(404);
+        }
         // Update the slot with validated data.
         $slot->update($request->validated());
         return redirect()->route('games.show', $slot->row->game);
