@@ -28,10 +28,10 @@
                         </button>
                     </form>
                 @else
-                    <p class="w-8 h-8 m-1 border rounded bg-gray-200 hover:bg-gray-400 cursor-not-allowed">
-                        {{-- Show the Emoji corresponding to the current slot --}}
-                        {{ $game->emoji_map[$slot->value] }}
-                    </p>
+                <button class="w-8 h-8 m-1 text-center border rounded bg-gray-200 hover:bg-gray-400 cursor-not-allowed" disabled>
+                    {{-- Show the Emoji corresponding to the current slot --}}
+                    {{ $game->emoji_map[$slot->value] }}
+                </button>
                 @endif
             @endforeach
             <x-gamehints :hints="$row->slots->pluck('hint')->all()" />
