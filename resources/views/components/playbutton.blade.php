@@ -1,7 +1,15 @@
 <form action="{{ route('games.store') }}" method="POST">
     @csrf
     {{-- Difficulty in code_length hidden field --}}
-    <input type="hidden" name="code_length" value="4">
+    <input type="hidden" name="code_length" value="{{
+        // if the user has selected a difficulty, use that
+        // otherwise, use the default difficulty of 4.
+        $difficulty == 'easy' ? '4' :
+        ($difficulty == 'medium' ? '5' :
+        ($difficulty == 'hard' ? '6' :
+        '4'))
+    }}">
+    {{-- Difficulty in code_length hidden field --}}
     <button
         action="submit"
         @class([
