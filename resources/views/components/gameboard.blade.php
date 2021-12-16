@@ -34,7 +34,7 @@
                     </p>
                 @endif
             @endforeach
-            <x-gamehints :slots="$row->slots" />
+            <x-gamehints :hints="$row->slots->pluck('hint')->all()" />
         </div>
     @endforeach
 </div>

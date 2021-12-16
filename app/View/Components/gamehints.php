@@ -6,16 +6,16 @@ use Illuminate\View\Component;
 
 class gamehints extends Component
 {
-    public $slots;
+    public $hints;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($slots)
+    public function __construct($hints)
     {
         // Hints are stored as an array of integers, where 0 is no match, 1 is an exact match, and 2 is a partial match.
-        $this->slots = $slots;
+        $this->hints = $hints;
     }
 
     /**
