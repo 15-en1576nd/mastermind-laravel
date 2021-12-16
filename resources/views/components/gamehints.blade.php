@@ -6,11 +6,11 @@
             @class([
                 "h-0 h-0 p-2 m-0 inline border border-gray-300",
                 // No hint
-                "bg-gray-200" => $hint === 0,
+                "bg-gray-200" => $hint == 0,
                 // Exact
-                "bg-green-200" => $hint === 1,
+                "bg-green-200" => $hint == 1,
                 // Near
-                "bg-yellow-200" => $hint === 2,
+                "bg-yellow-200" => $hint == 2,
             ])
         ></div>
     @endforeach

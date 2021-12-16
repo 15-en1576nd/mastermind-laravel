@@ -24,6 +24,7 @@ class GameLogicController extends Controller
             } else {
                 $slots[$i]->hint = 0; // no match
             }
+            $slots[$i]->save();
         }
         // Win or lost
         if ($guess_code->toArray() == $code) {
