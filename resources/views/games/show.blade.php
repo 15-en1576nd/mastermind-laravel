@@ -8,9 +8,8 @@
     <x-gameboard :game="$game" />
     <x-emojipicker :game="$game" />
     {{-- Submit Button --}}
-    <form action="{{ route('games.update', $game) }}" method="POST" class="max-w-max mx-auto">
+    <form action="/games/{{ $game->id }}/guess" method="POST" class="max-w-max mx-auto">
         @csrf
-        @method('PUT')
         <button type="submit" class="bg-purple-500 rounded text-white text-2xl font-medium p-2">{{ strtoupper(__('shorts.guess')) }}</button>
     </form>
     <x-scoreboard :game="$game" />
