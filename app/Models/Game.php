@@ -78,8 +78,8 @@ class Game extends Model
         // Calculate the score by dividing the time taken by the turn.
         $score = $score / ($this->turn + 1);
 
-        // Multiply the score by $this->code_length.
-        $score *= $this->code_length;
+        // Divide the score by $this->code_length.
+        $score /= ($this->code_length - 3);
 
         // Multiply the score by 100 to make it look cool.
         $score *= 100;
