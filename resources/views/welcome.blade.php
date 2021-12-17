@@ -7,7 +7,7 @@ getting spammed for no reason. (GET /game/create?difficulty= * 3) --}}
 @section('robots', 'index, nofollow')
 
 @section('content')
-    <h1 class="text-6xl text-gray-800 mx-auto max-w-max my-8">{{config('app.name')}}</h1>
+    <img src="/logo.webp" class="max-w-xl mx-auto" alt="mojimind">
     {{-- Play buttons --}}
     <div class="flex justify-around max-w-max mx-auto my-5">
         <x-playbutton :difficulty="4" />
