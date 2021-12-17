@@ -17,4 +17,5 @@ return [
     'password' => 'Wachtwoord',
     'confirm_password' => 'Bevestig Wachtwoord',
     'password_requirements' => 'Wachtwoord moet minstens 8 karakters lang zijn.',
+    'welcome' => 'Welkom',
 ];
