@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\SlotController;
+use App\Http\Controllers\ScoreboardController;
 use App\Http\Controllers\GameLogicController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,5 @@ Route::get('language/{locale}', function ($locale) {
 
 Route::resource('games', GameController::class);
 Route::resource('slots', SlotController::class);
+Route::resource('scoreboard', ScoreboardController::class);
 Route::post('games/{game}/guess', [GameLogicController::class, 'guess']);

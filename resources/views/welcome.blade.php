@@ -15,4 +15,10 @@ getting spammed for no reason. (GET /game/create?difficulty= * 3) --}}
         <x-playbutton difficulty="hard" />
     </div>
     <x-instructions></x-instructions>
+    <div class="flex justify-center">
+        <a
+            href="{{route('scoreboard.index')}}"
+            class="text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md my-5"
+        >{{strtoupper(__('shorts.scoreboard'))}}</a>
+    </div>
 @endsection

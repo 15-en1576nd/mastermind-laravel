@@ -8,31 +8,13 @@ use App\Models\GameStore;
 class ScoreboardController extends Controller
 {
     /**
-     * Go through all games and return an array with the top 10 scores sorted by score where
-     * lower scores are at the top.
+     * Display a listing of the resource.
      *
-     * @return [
-     *   'score' => int,
-     *   'id' => int,
-     * ][]
+     * @return \Illuminate\Http\Response
      */
-    public function getScoreboard($codeLength)
+    public function index()
     {
-        // Only entries with won = 1, a non null value for score and column length equal to
-        // $codeLength are considered. A lower score is better.
-        $games = GameStore::where('won', 0)
-            ->where('score', '!=', null)
-            ->where('length', $codeLength)
-            ->orderBy('score', 'asc')
-            ->get();
-        $scoreboard = [];
-        foreach ($games as $game) {
-            array_push($scoreboard, [
-                'score' => $game->score,
-                'id' => $game->id,
-            ]);
-        }
-
-        return $scoreboard;
+        $games = GameStore::orderBy('score', 'asc')->limit(10)->get();
+        return view('scoreboard.index', compact('games'));
     }
 }

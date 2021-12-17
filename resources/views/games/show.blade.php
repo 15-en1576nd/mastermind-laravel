@@ -12,5 +12,4 @@
         @csrf
         <button type="submit" class="bg-purple-500 rounded text-white text-2xl font-medium p-2">{{ strtoupper(__('shorts.guess')) }}</button>
     </form>
-    <x-scoreboard :game="$game" />
 @endsection

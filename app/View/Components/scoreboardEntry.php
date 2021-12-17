@@ -4,17 +4,21 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class scoreboard extends Component
+class scoreboardEntry extends Component
 {
-    public $games;
+    public $name;
+    public $score;
+    public $rank;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($games)
+    public function __construct($name, $score, $rank)
     {
-        $this->games = $games;
+        $this->name = $name;
+        $this->score = $score;
+        $this->rank = $rank;
     }
 
     /**
@@ -24,6 +28,6 @@ class scoreboard extends Component
      */
     public function render()
     {
-        return view('components.scoreboard');
+        return view('components.scoreboard-entry');
     }
 }
