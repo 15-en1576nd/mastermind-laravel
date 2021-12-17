@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 use App\Models\Row;
 
@@ -66,6 +67,27 @@ class Game extends Model
 
             $row->save();
         }
+    }
+
+    // Calculate the score of the game.
+    public function calculateScore()
+    {
+        // Calculate the time it took by subtracting the created_at from the current time.
+        $score = Carbon::now()->diffInSeconds($this->created_at);
+
+        // Calculate the score by dividing the time taken by the turn.
+        $score = $score / ($this->turn + 1);
+
+        // Divide the score by $this->code_length.
+        $score /= ($this->code_length - 3);
+
+        // Multiply the score by 100 to make it look cool.
+        $score *= 100;
+
+        // Round the score to a whole number.
+        $score = round($score);
+
+        return $score;
     }
 
 

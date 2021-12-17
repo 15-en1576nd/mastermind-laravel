@@ -29,6 +29,7 @@ class GameLogicController extends Controller
         // Win or lost
         if ($guess_code->toArray() == $code) {
             $game->won = true;
+            $game->score = $game->calculateScore();
         } else {
             $game->turn++;
             if ($game->turn == $game->rows->count()) {

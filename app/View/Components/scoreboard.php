@@ -6,16 +6,15 @@ use Illuminate\View\Component;
 
 class scoreboard extends Component
 {
-    public $game;
-    public $scoreboard;
+    public $games;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($game)
+    public function __construct($games)
     {
-        $this->game = $game;
+        $this->games = $games;
     }
 
     /**
