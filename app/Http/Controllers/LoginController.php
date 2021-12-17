@@ -40,6 +40,7 @@ class LoginController extends Controller
             // If successful, redirect to their intended location
             return redirect()->intended('/');
         }
+        return view('login')->withErrors('Invalid credentials.');
     }
 
     /**
