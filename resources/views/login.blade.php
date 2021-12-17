@@ -5,7 +5,7 @@
 @section('robots', 'index, follow')
 
 @section('content')
-    <div class="bg-white py-5 px-3 max-w-xl mx-auto m-5">
+    <div class="bg-white py-5 px-3 max-w-xl mx-auto m-5 shadow-xl">
         <h2 class="mb-3 font-semibold text-3xl text-gray-800">{{ __('shorts.login') }}</h2>
         <form method="POST" action="/login" class="w-full">
             @csrf
