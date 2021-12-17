@@ -9,4 +9,6 @@ return [
     'changelang' => '/language/en',
     "playyourself" => "Speel zelf",
     "scoreboard" => "Bekijk Scorebord",
+    'name' => 'Naam',
+    'difficulty' => 'Moeilijkheid',
 ];

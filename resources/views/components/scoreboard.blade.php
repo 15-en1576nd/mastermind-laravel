@@ -6,10 +6,10 @@
                     Rank
                 </th>
                 <th>
-                    Name
+                    {{ __('shorts.name') }}
                 </th>
                 <th>
-                    Difficulty
+                    {{ __('shorts.difficulty') }}
                 <th>
                     Score
                 </th>

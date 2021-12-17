@@ -9,4 +9,6 @@ return [
     'changelang' => '/language/nl',
     'playyourself' => 'Play yourself',
     "scoreboard" => "View Scoreboard",
+    'name' => 'Name',
+    'difficulty' => 'Difficulty',
 ];
