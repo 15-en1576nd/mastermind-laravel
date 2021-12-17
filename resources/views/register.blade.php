@@ -36,7 +36,6 @@
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2">{{ __('shorts.password') }}</label>
                 <input id="password" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror
                 " name="password" required autocomplete="new-password">
-                <p class="text-gray-600 text-xs italic">{{ __('shorts.password_description') }}</p>
                 <p class="text-gray-600 text-xs italic">{{ __('shorts.password_requirements') }}</p>
             </div>
             <div class="mb-3">
