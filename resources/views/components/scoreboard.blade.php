@@ -9,13 +9,19 @@
                     Name
                 </th>
                 <th>
+                    Difficulty
+                <th>
                     Score
                 </th>
             </tr>
         </thead>
         <tbody class="text-gray-700">
             @foreach($games as $game)
-                <x-scoreboard-entry :score="$game->score" :name="$game->id" :rank="$loop->iteration" />
+                <x-scoreboard-entry
+                    :score="$game->score"
+                    :name="$game->id"
+                    :difficulty="__('difficulties.' . $game->code_length)"
+                    :rank="$loop->iteration" />
             @endforeach
         </tbody>
     </table>

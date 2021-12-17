@@ -9,16 +9,18 @@ class scoreboardEntry extends Component
     public $name;
     public $score;
     public $rank;
+    public $difficulty;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name, $score, $rank)
+    public function __construct($name, $score, $rank, $difficulty)
     {
         $this->name = $name;
         $this->score = $score;
         $this->rank = $rank;
+        $this->difficulty = $difficulty;
     }
 
     /**
