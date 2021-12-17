@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\GameStore;
+use App\Models\Game;
 
 class ScoreboardController extends Controller
 {
@@ -14,7 +14,7 @@ class ScoreboardController extends Controller
      */
     public function index()
     {
-        $games = GameStore::orderBy('score', 'asc')->limit(10)->get();
+        $games = Game::orderBy('score', 'asc')->where('won', true)->limit(10)->get();
         return view('scoreboard.index', compact('games'));
     }
 }
