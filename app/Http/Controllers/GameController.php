@@ -39,7 +39,13 @@ class GameController extends Controller
     public function store(StoreGameRequest $request)
     {
         // Create a new game.
-        $game = Game::create($request->validated());
+        $game = Game::create(
+            [
+                'user_id' => auth()->user()->id,
+                // For some reason, PHP does not support proper spread operator syntax, so we have to do this manually.
+                'code_length' => $request->validated()['code_length'],
+            ]
+        );
         // Redirect to the game's page.
         return redirect()->route('games.show', $game);
     }

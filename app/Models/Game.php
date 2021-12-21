@@ -96,4 +96,9 @@ class Game extends Model
     {
         return $this->hasMany(Row::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
