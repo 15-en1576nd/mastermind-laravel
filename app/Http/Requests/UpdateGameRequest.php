@@ -13,8 +13,8 @@ class UpdateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        // For now, every user can update a game.
-        return true;
+        // The authorization is handled by a policy.
+        return $this->user() && $this->user()->can('update', $this->game);
     }
 
     /**

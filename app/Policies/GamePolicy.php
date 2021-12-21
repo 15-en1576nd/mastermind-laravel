@@ -18,7 +18,7 @@ class GamePolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,7 @@ class GamePolicy
      */
     public function view(User $user, Game $game)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,8 @@ class GamePolicy
      */
     public function create(User $user)
     {
-        //
+        // If the user is logged in, they can create a new game.
+        return auth()->check();
     }
 
     /**
@@ -53,7 +54,8 @@ class GamePolicy
      */
     public function update(User $user, Game $game)
     {
-        //
+        // If the current user is the game's owner, they can update the game.
+        return $user->id === $game->user_id;
     }
 
     /**
@@ -65,7 +67,8 @@ class GamePolicy
      */
     public function delete(User $user, Game $game)
     {
-        //
+        // If the current user is the game's owner, they can delete the game.
+        return $user->id === $game->user_id;
     }
 
     /**
