@@ -1,7 +1,9 @@
 <div class="sticky h-16 bg-white shadow-md border-t-4 border-blue-700">
     {{-- Show username if logged in --}}
     <div class="h-full w-full flex justify-between items-center">
-        <img src="/logo.webp" class="h-full ml-2" alt="mojimind">
+        <a href="/" class="text-blue-700 hover:text-blue-600">
+            <img src="/logo.webp" class="h-full ml-2" alt="mojimind">
+        </a>
         <div class="flex h-full justify-center items-center">
             @if (Auth::check())
                 <form action="/logout" method="POST" class="m-0">
