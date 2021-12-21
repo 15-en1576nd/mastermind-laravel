@@ -5,9 +5,9 @@
             <form action="/logout" method="POST" class="m-0">
                 @csrf
                 <button action="submit" class="p-2">
-                    <p class="text-blue-700 text-lg font-semibold">
+                    <span class="text-blue-700 text-lg font-semibold" title="{{ __('shorts.logout') }}">
                         {{ __('shorts.welcome') }}, {{ Auth::user()->name }}
-                    </p>
+                    </span>
                 </button>
             </form>
         @else

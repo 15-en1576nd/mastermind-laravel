@@ -14,6 +14,7 @@ return [
     'email' => 'Email',
     'register' => 'Register',
     'login' => 'Login',
+    'logout' => 'Logout',
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
     'password_requirements' => 'Password must be at least 8 characters long.',
