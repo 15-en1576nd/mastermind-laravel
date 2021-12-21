@@ -42,10 +42,13 @@
                 <label for="password-confirm" class="block text-gray-700 text-sm font-bold mb-2">{{ __('shorts.confirm_password') }}</label>
                 <input id="password-confirm" type="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="password_confirmation" required autocomplete="new-password">
             </div>
-            <div class="flex justify-around w-full">
+            <div class="flex justify-center w-full">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-w-max">
                     {{ __('shorts.register') }}
                 </button>
+                <a href="/login" class="text-blue-500 hover:text-blue-700 text-sm font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline max-w-max">
+                    {{ __('shorts.login') }}
+                </a>
             </div>
         </form>
 
