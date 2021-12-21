@@ -2,7 +2,7 @@
     {{-- Show username if logged in --}}
     <div class="h-full float-right flex justify-end items-center">
         @if (Auth::check())
-            <form action="/logout" method="POST">
+            <form action="/logout" method="POST" class="m-0">
                 @csrf
                 <button action="submit" class="p-2">
                     <p class="text-blue-700 text-lg font-semibold">
