@@ -18,4 +18,5 @@ return [
     'confirm_password' => 'Confirm Password',
     'password_requirements' => 'Password must be at least 8 characters long.',
     'welcome' => 'Welcome',
+    'create_account' => 'Create an account!',
 ];
