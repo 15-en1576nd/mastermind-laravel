@@ -6,6 +6,7 @@ use App\Http\Controllers\ScoreboardController;
 use App\Http\Controllers\GameLogicController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,4 +35,5 @@ Route::resource('slots', SlotController::class);
 Route::resource('scoreboard', ScoreboardController::class);
 Route::resource('login', LoginController::class);
 Route::resource('register', RegisterController::class);
+Route::resource('logout', LogoutController::class);
 Route::post('games/{game}/guess', [GameLogicController::class, 'guess']);

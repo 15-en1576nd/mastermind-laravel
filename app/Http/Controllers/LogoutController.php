@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreLoginRequest;
+use \App\Http\Requests\LogoutRequest;
 
-class LoginController extends Controller
+class LogoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('login');
+        abort(404);
     }
 
     /**
@@ -30,17 +30,13 @@ class LoginController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreLoginRequest  $request
+     * @param  \App\Http\Requests\LogoutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreLoginRequest $request)
+    public function store(Request $request)
     {
-        // Attempt to log the user in
-        if (auth()->attempt($request->validated())) {
-            // If successful, redirect to their intended location
-            return redirect()->intended('/');
-        }
-        return view('login')->withErrors(['password' => 'Invalid credentials.']);
+        auth()->logout();
+        return redirect()->back();
     }
 
     /**
@@ -85,8 +81,6 @@ class LoginController extends Controller
      */
     public function destroy($id)
     {
-        // Log the user out
-        auth()->logout();
-        return redirect()->back();
+        abort(404);
     }
 }
