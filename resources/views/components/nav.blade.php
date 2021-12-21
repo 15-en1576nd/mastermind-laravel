@@ -1,4 +1,5 @@
 <div class="sticky h-16 bg-white shadow-md border-t-4 border-blue-700">
+    <img src="/logo.webp" class="h-full ml-2" alt="mojimind">
     {{-- Show username if logged in --}}
     <div class="h-full float-right flex justify-end items-center">
         @if (Auth::check())
