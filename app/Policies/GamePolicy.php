@@ -16,7 +16,7 @@ class GamePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
         return true;
     }
@@ -28,7 +28,7 @@ class GamePolicy
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Game $game)
+    public function view(?User $user, Game $game)
     {
         return true;
     }
@@ -39,10 +39,10 @@ class GamePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(?User $user)
     {
-        // If the user is logged in, they can create a new game.
-        return auth()->check();
+        // Anyone can create a game.
+        return true;
     }
 
     /**
@@ -52,10 +52,11 @@ class GamePolicy
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Game $game)
+    public function update(?User $user, Game $game)
     {
-        // If the current user is the game's owner, they can update the game.
-        return $user->id === $game->user_id;
+        // If the game has a user_id field, then the game is owned by a user.
+        // Else, the game is owned by a guest, and we need to check auth_token.
+        return is_null($game->user_id) ? $game->auth_token === session('auth_token') : $game->user_id === $user->id;
     }
 
     /**

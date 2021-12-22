@@ -16,6 +16,8 @@ class Game extends Model
         'code_length',
         'selected_emoji',
         'turn',
+        'user_id',
+        'auth_token',
     ];
 
     // The emoji_map

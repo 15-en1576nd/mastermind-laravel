@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Support\Facades\Gate;
 class UpdateGameRequest extends FormRequest
 {
     /**
@@ -13,8 +13,8 @@ class UpdateGameRequest extends FormRequest
      */
     public function authorize()
     {
-        // The authorization is handled by a policy.
-        return $this->user() && $this->user()->can('update', $this->game);
+        // Invoke the policy without using $this->user()->can()
+        return Gate::allows('update', $this->route('game'));
     }
 
     /**

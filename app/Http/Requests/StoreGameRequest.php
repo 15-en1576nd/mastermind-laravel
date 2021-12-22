@@ -13,8 +13,8 @@ class StoreGameRequest extends FormRequest
      */
     public function authorize()
     {
-        // Every logged in user can create a new game.
-        return auth()->check();
+        // This is handled by a policy.
+        return true;
     }
 
     /**
