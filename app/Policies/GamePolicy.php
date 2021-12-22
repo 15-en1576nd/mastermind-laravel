@@ -56,7 +56,9 @@ class GamePolicy
     {
         // If the game has a user_id field, then the game is owned by a user.
         // Else, the game is owned by a guest, and we need to check auth_token.
-        return is_null($game->user_id) ? $game->auth_token === session('auth_token') : $game->user_id === $user->id;
+        return is_null($game->user_id) ?
+            in_array($game->auth_token, session('auth_token', [])) :
+            $game->user_id === $user->id;
     }
 
     /**

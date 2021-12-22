@@ -51,7 +51,10 @@ class GameController extends Controller
         );
         // If the auth_token was generated, we need to save it in the user's session.
         if (!is_null($game->auth_token)) {
-            session()->put('auth_token', $game->auth_token);
+            if (!session()->has('auth_token')) {
+                session()->put('auth_token', []);
+            }
+            session()->push('auth_token', $game->auth_token);
         }
         // Redirect to the game's page.
         return redirect()->route('games.show', $game);
