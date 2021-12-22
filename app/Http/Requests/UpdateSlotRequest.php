@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateSlotRequest extends FormRequest
 {
@@ -13,8 +14,8 @@ class UpdateSlotRequest extends FormRequest
      */
     public function authorize()
     {
-        // For now we allow anyone to update a slot. We will change this to per user later.
-        return true;
+        // Invoke the gamePolicy without using $this->user()->can() with $slot->row->game
+        return Gate::allows('update', $this->route('slot')->row->game);
     }
 
     /**

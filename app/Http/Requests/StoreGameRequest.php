@@ -13,7 +13,7 @@ class StoreGameRequest extends FormRequest
      */
     public function authorize()
     {
-        // Every user can create a new game.
+        // This is handled by a policy.
         return true;
     }
 

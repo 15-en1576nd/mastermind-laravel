@@ -16,6 +16,8 @@ class Game extends Model
         'code_length',
         'selected_emoji',
         'turn',
+        'user_id',
+        'auth_token',
     ];
 
     // The emoji_map
@@ -95,5 +97,10 @@ class Game extends Model
     public function rows()
     {
         return $this->hasMany(Row::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
