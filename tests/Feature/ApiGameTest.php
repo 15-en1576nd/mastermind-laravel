@@ -69,4 +69,35 @@ class ApiGameTest extends TestCase
             'user_id',
         ]);
     }
+    public function test_game_update()
+    {
+        $response = $this->post('/api/games', [
+            'code_length' => 4,
+        ]);
+
+        $id = json_decode($response->getContent())->id;
+        $auth_token = json_decode($response->getContent())->auth_token;
+
+        // Set Authorization header
+        $this->withHeaders([
+            'Authorization' => $auth_token,
+        ]);
+        $response = $this->put("/api/games/$id", [
+            'selected_emoji' => 1,
+        ]);
+
+        $response->assertStatus(200);
+        $response->assertJsonStructure([
+            'id',
+            'code_length',
+            'selected_emoji',
+            'turn',
+            'user_id',
+        ]);
+        // Make sure the database has the updated selected_emoji.
+        $this->assertDatabaseHas('games', [
+            'id' => $id,
+            'selected_emoji' => 1,
+        ]);
+    }
 }
