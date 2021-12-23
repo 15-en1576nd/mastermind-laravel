@@ -19,5 +19,6 @@ use App\Http\Controllers\api\SlotController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('games', GameController::class);
-Route::resource('slots', SlotController::class);
+
+Route::apiResource('games', GameController::class, ["as" => "api"]);
+Route::apiResource('slots', SlotController::class, ["as" => "api"]);
