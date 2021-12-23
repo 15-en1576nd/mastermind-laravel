@@ -20,6 +20,11 @@ class Game extends Model
         'auth_token',
     ];
 
+    // Don't serialize the auth token.
+    protected $hidden = [
+        'auth_token',
+    ];
+
     // The emoji_map
     public $emoji_map = [
         0 => '',
