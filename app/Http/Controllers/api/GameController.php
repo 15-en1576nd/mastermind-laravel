@@ -37,6 +37,7 @@ class GameController extends Controller
             ]
         );
         $game->save();
+        $game->refresh();
         // Return the game with the auth_token.
         return response()->json($game->makeVisible([
             'auth_token',
