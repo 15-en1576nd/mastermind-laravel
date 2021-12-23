@@ -37,8 +37,10 @@ class GameController extends Controller
             ]
         );
         $game->save();
-        // Return the game and the auth token.
-        return response()->json($game);
+        // Return the game with the auth_token.
+        return response()->json($game->makeVisible([
+            'auth_token',
+        ]));
     }
 
     /**
