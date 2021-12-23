@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\Game;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
-use Illuminate\Http\Request;
 
 class GamePolicy
 {
@@ -49,23 +48,17 @@ class GamePolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\User  $user
      * @param  \App\Models\Game  $game
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Request $request, ?User $user, Game $game)
+    public function update(?User $user, Game $game)
     {
-        // If the game has a user_id field, then the game is owned by a user, so we check if the user is the owner.
-        if ($game->user_id) {
-            return $user->id === $game->user_id;
-        }
-        // Now we know auth_token is set, so we check if the auth_token is the same as the one in the session.
-        if (in_array($game->auth_token, session('auth_token', []))) {
-            return true;
-        }
-        // Final check is the Authorization header.
-        return $request->header('Authorization') === $game->auth_token;
+        // If the game has a user_id field, then the game is owned by a user.
+        // Else, the game is owned by a guest, and we need to check auth_token.
+        return is_null($game->user_id) ?
+            in_array($game->auth_token, session('auth_token', [])) :
+            $game->user_id === $user->id;
     }
 
     /**
