@@ -40,12 +40,13 @@ class GameController extends Controller
         $game->save();
         $game->refresh();
         // Return the game with the auth_token with all rows(with all slots)
-        return response()->json($game->makeVisible([
-            'auth_token',
-        ])::with([
+        return response()->json($game::with([
             'rows',
             'rows.slots',
-        ])->findOrFail($game->id));
+        ])->findOrFail($game->id)
+            ->makeVisible([
+                'auth_token',
+            ]));
     }
 
     /**
