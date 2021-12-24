@@ -17,6 +17,7 @@ class GameController extends Controller
      */
     public function index()
     {
+        // Return all games without rows and slots(this is just for overview, so we don't need to return all rows and slots).
         return response()->json(Game::all());
     }
 
@@ -38,10 +39,13 @@ class GameController extends Controller
         );
         $game->save();
         $game->refresh();
-        // Return the game with the auth_token.
+        // Return the game with the auth_token with all rows(with all slots)
         return response()->json($game->makeVisible([
             'auth_token',
-        ]));
+        ])::with([
+            'rows',
+            'rows.slots',
+        ])->findOrFail($game->id));
     }
 
     /**
@@ -52,7 +56,13 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return response()->json($game);
+        // Return the game with the rows and slots
+        return response()->json(
+            $game::with([
+                'rows',
+                'rows.slots',
+            ])->findOrFail($game->id)
+        );
     }
 
     /**
@@ -65,7 +75,13 @@ class GameController extends Controller
     public function update(UpdateGameRequest $request, Game $game)
     {
         $game->update($request->validated());
-        return response()->json($game);
+        // Return the game with the rows and slots
+        return response()->json(
+            $game::with([
+                'rows',
+                'rows.slots',
+            ])->findOrFail($game->id)
+        );
     }
 
     /**
@@ -77,6 +93,10 @@ class GameController extends Controller
     public function destroy(Game $game)
     {
         $game->delete();
-        return response()->json($game);
+        return response()->json(
+            [
+                'success' => 'OK',
+            ]
+        );
     }
 }
