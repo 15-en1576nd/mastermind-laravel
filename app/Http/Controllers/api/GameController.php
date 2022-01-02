@@ -100,4 +100,20 @@ class GameController extends Controller
             ]
         );
     }
+
+    /**
+     * Make a guess on the guess
+     *
+     * @param  \App\Models\Game  $game
+     * @return \Illuminate\Http\Response
+     */
+    public function guess(Game $game) {
+        $game->guess();
+        return response()->json(
+            $game::with([
+                'rows',
+                'rows.slots',
+            ])->findOrFail($game->id)
+        );
+    }
 }

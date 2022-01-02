@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('games', GameController::class, ["as" => "api"]);
 Route::apiResource('slots', SlotController::class, ["as" => "api"]);
+Route::post('games/{game}/guess', [GameController::class, 'guess']);
