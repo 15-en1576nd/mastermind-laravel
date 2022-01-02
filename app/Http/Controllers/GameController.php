@@ -112,4 +112,16 @@ class GameController extends Controller
         // Redirect to the home page.
         return redirect('/');
     }
+
+    /**
+     * Make a guess on the guess
+     *
+     * @param  \App\Http\Requests\UpdateGameRequest  $request
+     * @param  \App\Models\Game  $game
+     * @return \Illuminate\Http\Response
+     */
+    public function guess(Game $game) {
+        $game->guess();
+        return redirect()->back();
+    }
 }
