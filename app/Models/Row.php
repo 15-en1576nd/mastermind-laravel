@@ -47,6 +47,6 @@ class Row extends Model
 
     public function slots()
     {
-        return $this->hasMany(Slot::class);
+        return $this->hasMany(Slot::class)->orderBy('id', 'asc');
     }
 }

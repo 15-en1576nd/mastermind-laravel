@@ -96,7 +96,7 @@ class Game extends Model
     // Relations
     public function rows()
     {
-        return $this->hasMany(Row::class);
+        return $this->hasMany(Row::class)->orderBy('id', 'asc');
     }
 
     public function user()
