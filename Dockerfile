@@ -3,6 +3,7 @@ FROM node:16-alpine AS node-builder
 WORKDIR /app
 COPY . .
 RUN npm install
+RUN npm run dev
 RUN npm run production
 
 # Install composer dependencies
