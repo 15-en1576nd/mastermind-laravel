@@ -26,4 +26,4 @@ ENV WEB_DOCUMENT_ROOT /app/public/
 # because this garbage framework loads environment variables at
 # build time instead of at runtime like ANY properly written software
 # or framework. If you have a better solution, please make a PR.
-CMD ["bash", "-c", "php artisan config:cache && /usr/bin/python3 /usr/bin/supervisord -c /opt/docker/etc/supervisor.conf --logfile /dev/null --pidfile /dev/null --user root"]
+CMD ["bash", "-c", "php artisan config:cache && php artisan route:clear && /usr/bin/python3 /usr/bin/supervisord -c /opt/docker/etc/supervisor.conf --logfile /dev/null --pidfile /dev/null --user root"]
