@@ -36,4 +36,4 @@ Route::resource('scoreboard', ScoreboardController::class);
 Route::resource('login', LoginController::class);
 Route::resource('register', RegisterController::class);
 Route::resource('logout', LogoutController::class);
-Route::post('games/{game}/guess', [GameLogicController::class, 'guess']);
+Route::post('games/{game}/guess', [GameController::class, 'guess']);

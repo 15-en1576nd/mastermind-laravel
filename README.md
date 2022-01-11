@@ -55,3 +55,25 @@ CREATE TABLE users (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 );
+```
+
+## API
+
+* GET ``/api/games``
+    * Returns a list of all games
+* POST ``/api/games``
+    * Create a new game
+    * Returns the game in JSON with auth_token
+* GET ``/api/games/<id>``
+    * Returns the game in JSON withouth auth_token
+* PUT/PATCH ``/api/games/<id>`` (Authorized endpoint)
+    * Update the game
+    * Only valid if ``selected_emoji`` is correct
+* PUT/PATCH ``/api/slots/<id>`` (Authorized endpoint)
+    * Update the slot
+    * Only valid if ``value`` is correct
+
+### Authorization
+
+* Authorization is done via the ``Authorization`` header.
+* The header must contain the ``auth_token`` of the game.

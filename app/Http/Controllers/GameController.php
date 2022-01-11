@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\StoreGameRequest;
 use App\Http\Requests\UpdateGameRequest;
 use App\Models\Game;
@@ -111,5 +112,20 @@ class GameController extends Controller
         $game->delete();
         // Redirect to the home page.
         return redirect('/');
+    }
+
+    /**
+     * Make a guess on the guess
+     *
+     * @param  \App\Models\Game  $game
+     * @return \Illuminate\Http\Response
+     */
+    public function guess(Game $game) {
+        if (!Gate::allows('update', $game)) {
+            // Return a 403 error because the user is not allowed to update the game.
+            abort(403);
+        }
+        $game->guess();
+        return redirect()->back();
     }
 }

@@ -20,6 +20,12 @@ class Game extends Model
         'auth_token',
     ];
 
+    // Don't serialize the auth token.
+    protected $hidden = [
+        'auth_token',
+        'code',
+    ];
+
     // The emoji_map
     public $emoji_map = [
         0 => '',
@@ -90,6 +96,38 @@ class Game extends Model
         $score = round($score);
 
         return $score;
+    }
+    // Funtion for making guesses
+    public function guess() {
+        if ($this->lost || $this->won) return;
+        // we do 11 minus because the turn reversed
+        $current_row = &$this->rows[11 - $this->turn];
+        $slots = &$current_row->slots;
+        $code = str_split($this->code);
+        $guess_code = $slots->pluck('value');
+
+        // Generate hints
+        foreach ($guess_code as $i => $current) {
+            if ($current == $code[$i]) {
+                $slots[$i]->hint = 1; // exact match
+            } elseif (in_array($current, $code)) {
+                $slots[$i]->hint = 2; // near match
+            } else {
+                $slots[$i]->hint = 0; // no match
+            }
+            $slots[$i]->save();
+        }
+        // Win or lost
+        if ($guess_code->toArray() == $code) {
+            $this->won = true;
+            $this->score = $this->calculateScore();
+        } else {
+            $this->turn++;
+            if ($this->turn == $this->rows->count()) {
+                $this->lost = true;
+            }
+        }
+        $this->save();
     }
 
 
