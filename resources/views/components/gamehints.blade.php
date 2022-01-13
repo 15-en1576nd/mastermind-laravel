@@ -1,6 +1,11 @@
 {{-- 2 by ?? grid of hints --}}
 <div class="grid grid-cols-2 grid-rows-{{round(count($hints) / 2)}} w-8 h-8 m-1 rounded overflow-hidden bg-gray-200">
-    @foreach ($hints as $hint)
+    @php
+        // We have to create a copy, then sort it. Because PHP is stupid.
+        $sorted_hints = $hints;
+        rsort($sorted_hints);
+    @endphp
+    @foreach ($sorted_hints as $hint)
         {{-- A hint is either EMPTY(0), EXACT(1) or NEAR(2) --}}
         <div
             @class([
