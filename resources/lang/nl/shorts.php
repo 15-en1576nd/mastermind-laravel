@@ -20,4 +20,10 @@ return [
     'password_requirements' => 'Wachtwoord moet minstens 8 karakters lang zijn.',
     'welcome' => 'Welkom',
     'create_account' => 'Maak een account aan!',
+    'won' => 'Je hebt gewonnen!',
+    'lost' => 'Je hebt verloren!',
+    'play_again' => 'Speel Opnieuw',
+    'won_description' => 'Je hebt de code in',
+    'won_description_turn' => 'beurten geraden.',
+    'lost_description' => 'Je hebt de code niet in 12 beurten geraden.',
 ];
