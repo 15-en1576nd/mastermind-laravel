@@ -58,8 +58,17 @@ class Game extends Model
     {
         $code = '';
 
+        // Generate a random code of numbers 1-8 with length $this->code_length.
+        // Where there are not any instances of the same number more than once.
         for ($i = 0; $i < $this->code_length; $i++) {
-            $code .= rand(1, 8);
+            $number = rand(1, 8);
+
+            // Search through the code and see if the number is already in the code. If it is, generate a new number.
+            while (strpos($code, $number) !== false) {
+                $number = rand(1, 8);
+            }
+
+            $code .= $number;
         }
 
         return $code;
@@ -98,7 +107,8 @@ class Game extends Model
         return $score;
     }
     // Funtion for making guesses
-    public function guess() {
+    public function guess()
+    {
         if ($this->lost || $this->won) return;
         // we do 11 minus because the turn reversed
         $current_row = &$this->rows[11 - $this->turn];
