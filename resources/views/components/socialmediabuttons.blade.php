@@ -1,5 +1,5 @@
 @php
-    $description = "Can I guess the " . $game['length']. " Emoji long code in 12 guesses?";
+    $description = "Can I guess the " . $game->code_length. " Emoji long code in 12 guesses?";
 @endphp
 
 <div class="flex justify-around">
