@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', "Game #" . $game->id)
-@section('description', "Can I guess the " . $game->length . " Emoji long code in 12 guesses?")
+@section('description', "Can I guess the " . $game->code_length . " Emoji long code in 12 guesses?")
 @section('robots', 'index, nofollow')
 
 @section('content')
