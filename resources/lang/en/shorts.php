@@ -20,4 +20,10 @@ return [
     'password_requirements' => 'Password must be at least 8 characters long.',
     'welcome' => 'Welcome',
     'create_account' => 'Create an account!',
+    'won' => 'You Won!',
+    'lost' => 'You Lost!',
+    'play_again' => 'Play Again',
+    'won_description' => 'You guessed the code in',
+    'won_description_turn' => 'guesses.',
+    'lost_description' => 'You didn\'t guess the code in 12 guesses.',
 ];
