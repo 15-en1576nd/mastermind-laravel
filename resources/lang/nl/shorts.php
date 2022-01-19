@@ -21,7 +21,7 @@ return [
     'welcome' => 'Welkom',
     'create_account' => 'Maak een account aan!',
     'won' => 'Je hebt gewonnen!',
-    'lost' => 'Je hebt verloren!',
+    'lost' => 'Game Over!',
     'play_again' => 'Speel Opnieuw',
     'won_description' => 'Je hebt de code in',
     'won_description_turn' => 'beurten geraden.',

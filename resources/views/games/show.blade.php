@@ -8,9 +8,9 @@
 @if ($game->won)
 <div class="m-auto flex justify-center text-center">
 <div class="bg-green-400 text-green-600 mt-4 p-2 max-w-lg rounded-md shadow-lg">
-    <h1 class="font-extrabold">You Win!</h1>
+    <h1 class="font-extrabold">{{ __('shorts.won') }}</h1>
     <p>{{ __('shorts.won_description') }} <strong>{{ $game->turn }}</strong> {{ __('shorts.won_description_turn') }}</p>
-    <hr>
+    <hr class="m-1">
     <p class="mb-0">
         <a href="/" class="font-bold">{{ __('shorts.play_again') }}</a>
     </p>
@@ -21,7 +21,7 @@
 <div class="bg-red-300 text-red-600 mt-4 p-2 max-w-lg rounded-md shadow-lg">
     <h1 class="font-extrabold">{{ __('shorts.lost') }}</h1>
     <p>{{ __('shorts.lost_description') }}</p>
-    <hr>
+    <hr class="m-1">
     <p class="mb-0">
         <a href="/" class=" font-bold">{{ __('shorts.play_again') }}</a>
     </p>
