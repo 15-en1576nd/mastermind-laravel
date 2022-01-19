@@ -21,7 +21,7 @@ return [
     'welcome' => 'Welcome',
     'create_account' => 'Create an account!',
     'won' => 'You Won!',
-    'lost' => 'You Lost!',
+    'lost' => 'Game Over!',
     'play_again' => 'Play Again',
     'won_description' => 'You guessed the code in',
     'won_description_turn' => 'guesses.',
