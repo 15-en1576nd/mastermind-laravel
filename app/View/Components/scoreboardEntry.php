@@ -6,7 +6,7 @@ use Illuminate\View\Component;
 
 class scoreboardEntry extends Component
 {
-    public $name;
+    public $id;
     public $score;
     public $rank;
     public $difficulty;
@@ -15,9 +15,9 @@ class scoreboardEntry extends Component
      *
      * @return void
      */
-    public function __construct($name, $score, $rank, $difficulty)
+    public function __construct($id, $score, $rank, $difficulty)
     {
-        $this->name = $name;
+        $this->id = $id;
         $this->score = $score;
         $this->rank = $rank;
         $this->difficulty = $difficulty;

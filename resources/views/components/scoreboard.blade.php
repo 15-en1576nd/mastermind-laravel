@@ -6,9 +6,6 @@
                     Rank
                 </th>
                 <th>
-                    {{ __('shorts.name') }}
-                </th>
-                <th>
                     {{ __('shorts.difficulty') }}
                 <th>
                     Score
@@ -19,7 +16,7 @@
             @foreach($games as $game)
                 <x-scoreboard-entry
                     :score="$game->score"
-                    :name="$game->id"
+                    :id="$game->id"
                     :difficulty="__('difficulties.' . $game->code_length)"
                     :rank="$loop->iteration" />
             @endforeach
